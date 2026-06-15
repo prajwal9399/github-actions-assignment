@@ -6,30 +6,33 @@ on:
       - develop
 
 jobs:
-  basic-job:
+  build:
     runs-on: ubuntu-latest
 
     env:
-      COMPANY: NeoSoft
-      COURSE: GitHub Actions
+      COURSE: DevOps
+      TRAINER: Prajwal
 
     steps:
-      - name: Checkout Source Code
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Print Repository Name
-        run: echo "Repository: ${{ github.repository }}"
+        run: echo "Repository = ${{ github.repository }}"
 
       - name: Print Branch Name
-        run: echo "Branch: ${{ github.ref_name }}"
+        run: echo "Branch = ${{ github.ref_name }}"
 
       - name: Print Commit ID
-        run: echo "Commit ID: ${{ github.sha }}"
+        run: echo "Commit = ${{ github.sha }}"
 
       - name: Print Environment Variables
         run: |
-          echo "Company: $COMPANY"
-          echo "Course: $COURSE"
+          echo "Course = $COURSE"
+          echo "Trainer = $TRAINER"
 
-      - name: Final Message
-        run: echo "Basic CI completed successfully!"
+      - name: Multiple Commands
+        run: |
+          echo "Step 1"
+          echo "Step 2"
+          echo "Step 3"
