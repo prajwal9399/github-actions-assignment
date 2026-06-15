@@ -6,15 +6,15 @@ on:
       - develop
 
 jobs:
-  build:
+  basic-job:
     runs-on: ubuntu-latest
 
     env:
-      APP_NAME: GitHub-Actions
-      OWNER: Prajwal
+      COMPANY: NeoSoft
+      COURSE: GitHub Actions
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout Source Code
         uses: actions/checkout@v4
 
       - name: Print Repository Name
@@ -24,12 +24,12 @@ jobs:
         run: echo "Branch: ${{ github.ref_name }}"
 
       - name: Print Commit ID
-        run: echo "Commit: ${{ github.sha }}"
+        run: echo "Commit ID: ${{ github.sha }}"
 
       - name: Print Environment Variables
         run: |
-          echo "App Name: $APP_NAME"
-          echo "Owner: $OWNER"
+          echo "Company: $COMPANY"
+          echo "Course: $COURSE"
 
-      - name: Print Success Message
-        run: echo "Basic CI Workflow Executed Successfully!"
+      - name: Final Message
+        run: echo "Basic CI completed successfully!"
