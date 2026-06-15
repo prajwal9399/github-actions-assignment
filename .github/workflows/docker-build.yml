@@ -1,0 +1,29 @@
+name: Docker Build
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: |
+          docker build -t my-app:${{ github.run_number }} .
+
+      - name: Generate Build Report
+        run: |
+          echo "Docker Build Successful" > build-report.txt
+          echo "Run Number: ${{ github.run_number }}" >> build-report.txt
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-report
+          path: build-report.txt
