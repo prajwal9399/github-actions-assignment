@@ -1,0 +1,35 @@
+name: Basic CI Workflow
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      APP_NAME: GitHub-Actions
+      OWNER: Prajwal
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Print Repository Name
+        run: echo "Repository: ${{ github.repository }}"
+
+      - name: Print Branch Name
+        run: echo "Branch: ${{ github.ref_name }}"
+
+      - name: Print Commit ID
+        run: echo "Commit: ${{ github.sha }}"
+
+      - name: Print Environment Variables
+        run: |
+          echo "App Name: $APP_NAME"
+          echo "Owner: $OWNER"
+
+      - name: Print Success Message
+        run: echo "Basic CI Workflow Executed Successfully!"
